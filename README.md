@@ -77,12 +77,26 @@
     * `chmod 700 get_helm.sh`
     * `bash get_helm.sh`
     * `logout`
-* Install mlflow Helm chart
+* Install mlflow Helm chart (if S3 is backed by ODF. For other S3 variants, see below.)
     * `oc project odh`
     * `helm repo add strangiato https://strangiato.github.io/helm-charts/`
     * `helm repo update`
     * `helm install mlflow strangiato/mlflow-server`
 * Verify the deployment by opening the `mlflow-mlflow-server` route URL. You should see the mlflow dashboard.
+* If using other S3 variants,
+    * ensure bucket `mlflow` is present and note credentials and S3 endpoint.
+    * `oc project odh`
+    * `git clone https://github.com/mamurak/helm-charts.git`
+    * `git checkout alternate-s3`
+    * `cd helm-charts/charts/mlflow-server`
+    * `vim values.yaml`
+        * set `objectStorage.objectBucketClaim.enabled` to `false`
+        * set `S3EndpointUrl`
+        * set `MlflowBucketName` to `mlflow`
+        * set `S3AccessKeyId`
+        * set `S3SecretAccessKey`
+    * `helm dependency build`
+    * `helm install mlflow -f values.yaml .`
 
 #### Set up custom notebook
 
