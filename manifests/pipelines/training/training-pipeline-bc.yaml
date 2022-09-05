@@ -1,0 +1,47 @@
+kind: BuildConfig
+apiVersion: build.openshift.io/v1
+metadata:
+  name: training-pipeline
+spec:
+  nodeSelector: null
+  output:
+    to:
+      kind: ImageStreamTag
+      name: 'training-pipeline:latest'
+  resources: {}
+  successfulBuildsHistoryLimit: 5
+  failedBuildsHistoryLimit: 5
+  strategy:
+    type: Docker
+    dockerStrategy:
+      env:
+        - name: mlflow_server_endpoint
+          valueFrom:
+            secretKeyRef:
+              name: training-pipeline-secret
+              key: mlflow_server_endpoint
+        - name: s3_endpoint_url
+          valueFrom:
+            secretKeyRef:
+              name: training-pipeline-secret
+              key: s3_endpoint_url
+        - name: s3_access_key_id
+          valueFrom:
+            secretKeyRef:
+              name: training-pipeline-secret
+              key: s3_access_key_id
+        - name: s3_secret_access_key
+          valueFrom:
+            secretKeyRef:
+              name: training-pipeline-secret
+              key: s3_secret_access_key
+      dockerfilePath: Containerfile
+  postCommit: {}
+  source:
+    type: Git
+    git:
+      uri: 'notebook image repository URL'
+    contextDir: /container-images/training-pipeline
+    sourceSecret:
+      name: gitlab-access
+  runPolicy: Serial
