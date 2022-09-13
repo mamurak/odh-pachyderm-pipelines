@@ -96,6 +96,7 @@
         * set `MlflowBucketName` to `mlflow`
         * set `S3AccessKeyId`
         * set `S3SecretAccessKey`
+    * `helm repo add strangiato https://strangiato.github.io/helm-charts/`
     * `helm dependency build`
     * `helm install mlflow -f values.yaml .`
 
