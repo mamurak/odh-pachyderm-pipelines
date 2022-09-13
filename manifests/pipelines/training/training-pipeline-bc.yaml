@@ -40,8 +40,6 @@ spec:
   source:
     type: Git
     git:
-      uri: 'notebook image repository URL'
+      uri: 'https://github.com/mamurak/odh-pachyderm-pipelines.git'
     contextDir: /container-images/training-pipeline
-    sourceSecret:
-      name: gitlab-access
   runPolicy: Serial

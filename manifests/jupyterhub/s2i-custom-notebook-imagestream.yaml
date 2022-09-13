@@ -9,7 +9,7 @@ metadata:
   annotations:
     opendatahub.io/notebook-image-desc: Jupyter notebook image containing dependencies for custom ML project
     opendatahub.io/notebook-image-name: custom notebook image
-    opendatahub.io/notebook-image-url: 'notebook image repository URL'
+    opendatahub.io/notebook-image-url: 'https://github.com/mamurak/odh-pachyderm-pipelines.git'
 spec:
   lookupPolicy:
     local: true

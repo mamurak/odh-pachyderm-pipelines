@@ -102,7 +102,6 @@
 
 #### Set up custom notebook
 
-* Deploy `manifests/jupyterhub/gitlab-secret.yaml`.
 * Create imagestream `s2i-custom-notebook`.
     * Use metadata from `manifests/jupyterhub/s2i-custom-notebook-imagestream.yaml`.
 * Deploy `manifests/jupyterhub/s2i-custom-notebook.yaml`.
