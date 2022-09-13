@@ -87,8 +87,9 @@
     * ensure bucket `mlflow` is present and note credentials and S3 endpoint.
     * `oc project odh`
     * `git clone https://github.com/mamurak/helm-charts.git`
+    * `cd helm-charts`
     * `git checkout alternate-s3`
-    * `cd helm-charts/charts/mlflow-server`
+    * `cd charts/mlflow-server`
     * `vim values.yaml`
         * set `objectStorage.objectBucketClaim.enabled` to `false`
         * set `S3EndpointUrl`
