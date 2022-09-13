@@ -20,5 +20,5 @@ spec:
     type: Git
     git:
       uri: 'https://github.com/mamurak/odh-pachyderm-pipelines.git'
-    contextDir: /container-images/s2i-custom-notebook
+    contextDir: /container-images/custom-notebook
   runPolicy: Serial
